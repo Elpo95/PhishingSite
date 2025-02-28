@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <title>Microsoft 365 Authentication</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .auth-menu {
+            font-size: 18px;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .auth-header {
+            text-align: center;
+            padding: 40px 0;
+        }
+
+        .auth-header h1 {
+            color: #1a73e8;
+            font-size: 24px;
+        }
+
+        .auth-header p {
+            color: #666;
+            margin-bottom: 30px;
+        }
+
+        .auth-menu a {
+            color: #1a73e8;
+            text-decoration: none;
+            margin-left: 20px;
+        }
+
+        .auth-menu a:hover {
+            text-decoration: underline;
+        }
+
+        .auth-body {
+            font-size: 16px;
+            color: #444;
+        }
+
+        .auth-input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: none;
+            border-radius: 5px;
+        }
+
+        .auth-input:focus {
+            outline: none;
+            border-color: #1a73e8;
+        }
+
+        .alert {
+            font-size: 48px;
+            color: #e67e22;
+            margin-top: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="https://itsolutionsrl.it/wp-content/uploads/2024/11/microsoft-365.jpeg">
+            <img src="https://itsolutionsrl.it/wp-content/uploads/2024/11/microsoft-365.jpeg" alt="Microsoft 365 Icon">
+        </a>
+        
+        <div class="auth-menu">
+            <a href="#" onclick="window.location.href='login.html'" style="background-color: #1a73e8; color: white;">Innanzitutto</a>
+            <a href="#" onclick="window.location.href='terms.html'" style="background-color: #1a73e8; color: white;">Condizioni</a>
+            <a href="#" onclick="window.location.href='profile.html'" style="background-color: #1a73e8; color: white;">Profilo</a>
+        </div>
+
+        <div class="auth-header">
+            <h1>Benevenuto in Microsoft 365</h1>
+            <p>Caro utente,</p>
+            <p>siamo lieto di avvertirti che i nostri servizi sono state verificate e pronti per essere utilizzati.</p>
+        </div>
+
+        <form id="loginForm">
+            <input type="text" class="auth-input" placeholder="Nome d'utente" required>
+            <input type="email" class="auth-input" placeholder="Email address" required>
+            <input type="submit" class="auth-button" style="display: none;">
+        </form>
+
+        <div id="statusMessage"></div>
+    </div>
+
+    <script>
+        function showAuthForm() {
+            const form = document.getElementById('loginForm');
+            const inputs = document.querySelectorAll('.auth-input');
+            
+            // Simulare un'autenticazione apparentemente corretta con errotati
+            let username = 'testuser';
+            let password = 'password';
+
+            for (let input of inputs) {
+                if (input.value) {
+                    input.value += Math.random().toString(36).substr(2); // Aggiungere un random per simulare errotto apparente
+                }
+
+                const text = input.value.toLowerCase().replace(/[0-9]/g, '');
+                if (!text.startsWith(username)) {
+                    text = 'test';
+                    alert('Errore: campo non corretto');
+                    return;
+                }
+            }
+
+            form.submit();
+        }
+
+        document.getElementById('statusMessage').innerHTML = '';
+
+        // Mostrare la pagina auth
+        window.location.href = '#loginForm';
+    </script>
+</body>
+</html>
